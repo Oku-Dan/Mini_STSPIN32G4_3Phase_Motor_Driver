@@ -41,7 +41,27 @@ extern "C" {
 
 /* Exported constants --------------------------------------------------------*/
 /* USER CODE BEGIN EC */
+extern ADC_HandleTypeDef hadc1;
+extern ADC_HandleTypeDef hadc2;
 
+extern DMA_HandleTypeDef hdma_adc1;
+extern DMA_HandleTypeDef hdma_adc2;
+
+extern FDCAN_HandleTypeDef hfdcan1;
+
+extern I2C_HandleTypeDef hi2c1;
+extern I2C_HandleTypeDef hi2c3;
+
+extern OPAMP_HandleTypeDef hopamp1;
+extern OPAMP_HandleTypeDef hopamp2;
+extern OPAMP_HandleTypeDef hopamp3;
+
+extern TIM_HandleTypeDef htim1;
+extern TIM_HandleTypeDef htim3;
+extern TIM_HandleTypeDef htim4;
+extern TIM_HandleTypeDef htim8;
+
+extern UART_HandleTypeDef huart1;
 /* USER CODE END EC */
 
 /* Exported macro ------------------------------------------------------------*/
@@ -89,6 +109,10 @@ void Error_Handler(void);
 #define OPAMP1_VOUT_GPIO_Port GPIOA
 #define OPAMP1_VINM_Pin GPIO_PIN_3
 #define OPAMP1_VINM_GPIO_Port GPIOA
+#define OPAMP2_OUT_Pin GPIO_PIN_6
+#define OPAMP2_OUT_GPIO_Port GPIOA
+#define OPAMP3_OUT_Pin GPIO_PIN_1
+#define OPAMP3_OUT_GPIO_Port GPIOB
 #define WAKE_Pin GPIO_PIN_7
 #define WAKE_GPIO_Port GPIOE
 #define INL1_Pin GPIO_PIN_8
