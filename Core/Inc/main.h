@@ -43,7 +43,6 @@ extern "C" {
 /* USER CODE BEGIN EC */
 extern ADC_HandleTypeDef hadc1;
 extern ADC_HandleTypeDef hadc2;
-
 extern DMA_HandleTypeDef hdma_adc1;
 extern DMA_HandleTypeDef hdma_adc2;
 
@@ -62,6 +61,7 @@ extern TIM_HandleTypeDef htim4;
 extern TIM_HandleTypeDef htim8;
 
 extern UART_HandleTypeDef huart1;
+extern DMA_HandleTypeDef hdma_usart1_tx;
 /* USER CODE END EC */
 
 /* Exported macro ------------------------------------------------------------*/
