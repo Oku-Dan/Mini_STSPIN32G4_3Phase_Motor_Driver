@@ -55,6 +55,10 @@ extern OPAMP_HandleTypeDef hopamp1;
 extern OPAMP_HandleTypeDef hopamp2;
 extern OPAMP_HandleTypeDef hopamp3;
 
+extern SPI_HandleTypeDef hspi1;
+extern DMA_HandleTypeDef hdma_spi1_rx;
+extern DMA_HandleTypeDef hdma_spi1_tx;
+
 extern TIM_HandleTypeDef htim1;
 extern TIM_HandleTypeDef htim3;
 extern TIM_HandleTypeDef htim4;
@@ -62,6 +66,9 @@ extern TIM_HandleTypeDef htim8;
 
 extern UART_HandleTypeDef huart1;
 extern DMA_HandleTypeDef hdma_usart1_tx;
+
+extern DMA_HandleTypeDef hdma_memtomem_dma1_channel4;
+extern DMA_HandleTypeDef hdma_memtomem_dma1_channel5;
 /* USER CODE END EC */
 
 /* Exported macro ------------------------------------------------------------*/
@@ -79,6 +86,7 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
+#define TIM1_COUNT_MAX 8000
 #define NC_Pin GPIO_PIN_2
 #define NC_GPIO_Port GPIOE
 #define NCE3_Pin GPIO_PIN_3

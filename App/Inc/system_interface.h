@@ -10,7 +10,7 @@
 #define ADC_INDEX_MASK 0x0F
 #define ADC_INSTANCE_MASK 0xF0
 
-enum {
+typedef enum {
     ADC_SHUNT1      = ADC1_MASK | ADC_RANK(1),
     ADC_SHUNT3      = ADC1_MASK | ADC_RANK(2),
     ADC_TEMPERATURE = ADC1_MASK | ADC_RANK(3),
@@ -19,13 +19,16 @@ enum {
     ADC_AIN1        = ADC2_MASK | ADC_RANK(2),
     ADC_AIN2        = ADC2_MASK | ADC_RANK(3),
     ADC_VBUS        = ADC2_MASK | ADC_RANK(4),
-};
+} ADC_CHANNEL;
 
 void delay(uint32_t);
 void init_system(void);
-uint16_t get_adc_buffer(uint8_t);
+uint16_t get_adc_buffer(ADC_CHANNEL);
+uint16_t get_adc_latch(ADC_CHANNEL);
 float get_vref(void);
 float get_temperature(void);
 float get_vbus(void);
+uint16_t get_angle_raw(void);
+float get_angle(void);
 
 #endif /* SYSTEM_INTERFACE_H */
