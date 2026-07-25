@@ -1,6 +1,7 @@
 #ifndef SYSTEM_INTERFACE_H
 #define SYSTEM_INTERFACE_H
 
+#include <stdint.h>
 #include "main.h"
 
 #define ADC1_MASK 0x10
@@ -21,14 +22,16 @@ typedef enum {
     ADC_VBUS        = ADC2_MASK | ADC_RANK(4),
 } ADC_CHANNEL;
 
-void delay(uint32_t);
 void init_system(void);
+void delay(uint32_t);
 uint16_t get_adc_buffer(ADC_CHANNEL);
 uint16_t get_adc_latch(ADC_CHANNEL);
 float get_vref(void);
 float get_temperature(void);
 float get_vbus(void);
-uint16_t get_angle_raw(void);
-float get_angle(void);
+float get_angle_rad(void);
+void set_periodic_callback(void (*func)(void));
+void set_led(uint8_t state);
+void set_voltage(float u, float v, float w);
 
 #endif /* SYSTEM_INTERFACE_H */

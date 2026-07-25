@@ -44,6 +44,7 @@ target_link_directories(${CMAKE_PROJECT_NAME} PRIVATE
 
 # Add sources to executable
 file(GLOB_RECURSE APP_SOURCES
+    ${CMAKE_CURRENT_SOURCE_DIR}/Lib/Src/*.c
     ${CMAKE_CURRENT_SOURCE_DIR}/App/Src/*.c
     ${CMAKE_CURRENT_SOURCE_DIR}/App/Src/*.s
 )
@@ -56,6 +57,7 @@ target_sources(${CMAKE_PROJECT_NAME} PRIVATE
 # Add include paths
 target_include_directories(${CMAKE_PROJECT_NAME} PRIVATE
     # Add user defined include paths
+    ${CMAKE_CURRENT_SOURCE_DIR}/Lib/Inc
     ${CMAKE_CURRENT_SOURCE_DIR}/App/Inc
 )
 
