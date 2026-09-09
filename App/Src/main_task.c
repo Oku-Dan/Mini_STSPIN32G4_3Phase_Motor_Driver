@@ -33,15 +33,8 @@ void main_task(void)
   set_periodic_callback(update_motor_controller);
   init_system();
 
-  // MotorSetForcedAngle(&motor_handle, 0.0f, 0.05f);
-  // MotorSetForcedSpeed(&motor_handle, 3.14f, 0.05f)
-
   while (1)
   {
-    if(HAL_GetTick() < 1000) {
-      // MotorSetVoltage(&motor_handle, 0.00f, HAL_GetTick() / 1000.0f * 0.3f);
-    }
-
     static uint8_t led_state = 0;
     led_state = !led_state;
     set_led(led_state);

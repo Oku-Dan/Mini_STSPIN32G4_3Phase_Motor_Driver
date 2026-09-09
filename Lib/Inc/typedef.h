@@ -30,6 +30,7 @@ typedef struct{
     float target_speed;
     float current_d_ref;
     float current_q_ref;
+    float elec_angle;
     float voltage_d;
     float voltage_q;
 }Motor_ControllerTypeDef;

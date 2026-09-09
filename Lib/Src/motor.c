@@ -4,11 +4,11 @@
 static float get_elec_angle(Motor_HandleTypeDef *handle, float mech_angle)
 {
     float res = (mech_angle * handle->object->pole_pares) + handle->object->angle_offset;
-    while (res > 2.0f * PI) {
-        res -= 2.0f * PI;
+    if (res > 2.0f * M_PI) {
+        res -= (int)(res / (2.0f * M_PI)) * 2.0f * M_PI;
     }
-    while (res < 0.0f) {
-        res += 2.0f * PI;
+    if (res < 0.0f) {
+        res += ((int)(res / (-2.0f * M_PI)) + 1) * 2.0f * M_PI;
     }
     return res;
 }
@@ -77,14 +77,14 @@ Voltage_TypeDef MotorUpdateController(Motor_HandleTypeDef *handle, float mech_an
             voltage_q = handle->controller->voltage_q;
             break;
         case FORCED_COMMUTATION:
-            handle->controller->target_angle += handle->controller->target_speed * handle->controller->dt;
-            while (handle->controller->target_angle > 2.0f * PI) {
-                handle->controller->target_angle -= 2.0f * PI;
+            handle->controller->elec_angle += handle->controller->target_speed * handle->controller->dt;
+            while (handle->controller->elec_angle > 2.0f * PI) {
+                handle->controller->elec_angle -= 2.0f * PI;
             }
-            while (handle->controller->target_angle < 0.0f) {
-                handle->controller->target_angle += 2.0f * PI;
+            while (handle->controller->elec_angle < 0.0f) {
+                handle->controller->elec_angle += 2.0f * PI;
             }
-            theta = get_elec_angle(handle, handle->controller->target_angle);
+            theta = handle->controller->elec_angle;
             voltage_d = handle->controller->voltage_d;
             voltage_q = handle->controller->voltage_q;
             break;
@@ -110,16 +110,15 @@ Voltage_TypeDef MotorUpdateController(Motor_HandleTypeDef *handle, float mech_an
 void MotorSetForcedSpeed(Motor_HandleTypeDef *handle, float speed, float voltage)
 {
     handle->controller->target_speed = speed;
-    handle->controller->target_angle = handle->mech_angle;
     handle->controller->voltage_d = voltage;
     handle->controller->voltage_q = 0.0f;
     handle->controller->state = FORCED_COMMUTATION;
 }
 
-void MotorSetForcedAngle(Motor_HandleTypeDef *handle, float angle, float voltage)
+void MotorSetForcedElecAngle(Motor_HandleTypeDef *handle, float elec_angle, float voltage)
 {
     handle->controller->target_speed = 0.0f;
-    handle->controller->target_angle = angle;
+    handle->controller->elec_angle = elec_angle;
     handle->controller->voltage_d = voltage;
     handle->controller->voltage_q = 0.0f;
     handle->controller->state = FORCED_COMMUTATION;
