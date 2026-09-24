@@ -100,9 +100,15 @@ Voltage_TypeDef MotorUpdateController(Motor_HandleTypeDef *handle, float mech_an
     inv_park_transform(voltage_d, voltage_q, &voltage_alpha, &voltage_beta, sint, cost);
     inv_clarke_transform(voltage_alpha, voltage_beta, &voltage_u, &voltage_v, &voltage_w);
 
-    res.u = voltage_u;
-    res.v = voltage_v;
-    res.w = voltage_w;
+    if(handle->controller->state == DISARMED) {
+        res.u = 0.0f;
+        res.v = 0.0f;
+        res.w = 0.0f;
+    }else{
+        res.u = 0.5f + (voltage_u * 0.5f);
+        res.v = 0.5f + (voltage_v * 0.5f);
+        res.w = 0.5f + (voltage_w * 0.5f);
+    }
 
     return res;
 }

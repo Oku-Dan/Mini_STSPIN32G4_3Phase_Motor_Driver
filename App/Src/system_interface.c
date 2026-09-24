@@ -1,5 +1,6 @@
 #include "system_interface.h"
 #include "hardware_interface.h"
+#include "main.h"
 #include "math.h"
 
 void init_system(void)
@@ -67,5 +68,5 @@ void set_led(uint8_t state)
 }
 
 void set_voltage(float u, float v, float w){
-    set_pwm_duty(8000 * (u + 1.0f) / 2.0f, 8000 * (v + 1.0f) / 2.0f, 8000 * (w + 1.0f) / 2.0f);
+    set_pwm_duty(TIM1_COUNT_MAX * u, TIM1_COUNT_MAX * v, TIM1_COUNT_MAX * w);
 }
