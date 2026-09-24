@@ -117,10 +117,14 @@ void Error_Handler(void);
 #define OPAMP1_VOUT_GPIO_Port GPIOA
 #define OPAMP1_VINM_Pin GPIO_PIN_3
 #define OPAMP1_VINM_GPIO_Port GPIOA
+#define OPAMP2_VINM_Pin GPIO_PIN_5
+#define OPAMP2_VINM_GPIO_Port GPIOA
 #define OPAMP2_OUT_Pin GPIO_PIN_6
 #define OPAMP2_OUT_GPIO_Port GPIOA
 #define OPAMP3_OUT_Pin GPIO_PIN_1
 #define OPAMP3_OUT_GPIO_Port GPIOB
+#define OPAMP3_VINM_Pin GPIO_PIN_2
+#define OPAMP3_VINM_GPIO_Port GPIOB
 #define WAKE_Pin GPIO_PIN_7
 #define WAKE_GPIO_Port GPIOE
 #define INL1_Pin GPIO_PIN_8
